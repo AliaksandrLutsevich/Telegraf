@@ -1,22 +1,13 @@
 import React, { useEffect, useState } from "react";
 import FlipMove from "react-flip-move";
 import { useSelector } from "react-redux";
+import Modal from "react-modal";
 
 import "../styles/chatlist.scss";
 import "../styles/modal.scss";
 import ListChat from "./ListChat";
-import { selectUser } from "./userSlice";
-import Modal from "react-modal";
-import {
-  auth,
-  db,
-  Timestamp,
-  collection,
-  doc,
-  setDoc,
-  onSnapshot,
-  addDoc,
-} from "../firebase";
+import { selectUser } from './userSlice';
+import db, { auth } from '../firebase';
 
 import { Avatar, Button, Input } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
@@ -33,51 +24,28 @@ const Chatlist = () => {
   const [chats, setChats] = useState([]);
 
   useEffect(() => {
-    onSnapshot(
-      collection(db, "chats"),
-      (snapshot) => {
+    db.collection("chats")
+      .orderBy("chatName", "asc")
+      .onSnapshot((snapshot) =>
         setChats(
           snapshot.docs.map((doc) => ({
             id: doc.id,
             chatName: doc.data(),
           }))
-        );
-        console.log(chats);
-        // query(chats, orderBy("timestamp", "desc"))
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+        )
+      );
   }, []);
 
-  // const handleChat = (e) => {
-  //   if (chatInput) {
-  //     const chatsRef =  doc(collection(db, 'chats'));
-  //    setDoc(chatsRef,
-  //     {
-  //       chatName: chatInput,
-  //       chatImage: imageInput,
-  //       timestamp: Timestamp.now(),
-  //     });
-  //     console.log(chatsRef)
-  //   }
-  //   setChatInput(null);
-  //   setImageInput("https://clck.ru/XeSMj");
-  //   setModal(false);
-  // };
-
-  const handleChat = async (e) => {
+  const addNewChat = () => {
     if (chatInput) {
-      const chatsRef = await addDoc(collection(db, "chats"), {
+      db.collection("chats").add({
         chatName: chatInput,
         chatImage: imageInput,
-        timestamp: Timestamp.now(),
       });
-      console.log(chatsRef);
     }
+
     setChatInput(null);
-    setImageInput("https://clck.ru/XeSMj");
+    setImageInput("");
     setModal(false);
   };
 
@@ -113,7 +81,7 @@ const Chatlist = () => {
           }}
         >
           <div className="modal__info">
-            <h2>Create a chat</h2>
+            <h2>Let's create a chat!</h2>
             <Input
               required
               value={chatInput}
@@ -131,7 +99,7 @@ const Chatlist = () => {
               placeholder="Enter image link"
             />
            
-            <Button className='modal_create_but' onClick={handleChat}>Create</Button>
+            <Button className='modal_create_but' onClick={addNewChat}>Create</Button>
             <Button className='modal_cancel_but' onClick={() => setModal(false)} variant="outlined">
               Cancel
             </Button>

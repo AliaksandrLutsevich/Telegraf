@@ -1,9 +1,12 @@
 import React from "react";
 import "../styles/login.scss";
-import { signIn } from "../firebase";
+import { auth, provider } from "../firebase";
 
 
 const Login = () => {
+  const signIn = (e) => {
+    auth.signInWithPopup(provider).catch((error) => alert(error.message));
+  };
   return (
     <div className="login">
       <div className="login__imgbox login__logo"></div>
