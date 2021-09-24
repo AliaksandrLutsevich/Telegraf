@@ -1,0 +1,94 @@
+.chatlist {
+  display: flex;
+  flex-direction: column;
+  flex: 0.3;
+  padding: 10px;
+  background-color: rgb(33, 33, 33);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+
+    & > .MuiSvgIcon-root {
+      cursor: pointer;
+      font-size: xx-large;
+      color: rgb(255, 255, 255);
+
+      &:hover {
+        color: rgb(200, 10, 200);
+      }
+    }
+
+    & > .MuiAvatar-root {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+  }
+
+  &__input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 10px;
+    padding: 5px;
+    background-color: rgb(91, 91, 90);
+    border-radius: 33px;
+  }
+
+  &__input > input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+
+  &__input > MuiSvgIcon-root {
+    margin-left: 5px;
+    color: rgb(255, 255, 255);
+  }
+
+  &__chats {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 20px;
+    overflow: auto;
+  }
+
+  &__bookmarks {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+
+    &:hover {
+      background-color: rgba(151, 151, 151, 0.6);
+      cursor: pointer;
+    }
+
+    & > p {
+      margin-left: 10px;
+      color: rgb(255, 255, 255);
+    }
+  }
+
+  &__bookmarksIcon {
+    align-items: center;
+    padding: 5px;
+    background-color: #b1b1b1;
+    border-radius: 50px;
+
+    & > .MuiSvgIcon-root {
+      margin: 0px 2px 0px 2px;
+      color: rgb(255, 255, 255);
+    }
+  }
+}
+
+.modal__info{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  
+  
+}

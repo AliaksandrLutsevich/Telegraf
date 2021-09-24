@@ -1,0 +1,35 @@
+.login {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(40, 40, 48);
+
+  &__imgbox {
+    box-sizing: border-box;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    padding: 23px;
+  }
+
+  &__logo {
+    background: url(../logo/telegraf_logo.png) center no-repeat;
+  }
+
+  &__button {
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(69, 0, 118);
+    border-radius: 30px;
+    font-size: large;
+
+    &:hover {
+      color: rgb(69, 0, 118);
+      background-color: rgb(255, 255, 255);
+    }
+  }
+}

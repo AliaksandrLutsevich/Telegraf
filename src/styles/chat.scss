@@ -1,0 +1,123 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  flex: 0.7;
+  height: 100vh;
+  background-color: rgb(19, 19, 19);
+  color: rgb(255, 255, 255);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    &-left {
+      display: flex;
+      align-items: center;
+
+      & > h5 {
+        margin-left: 15px;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+
+    &-right {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+
+      & > .MuiSvgIcon-root {
+        font-size: xx-large;
+        margin-right: 5px;
+        cursor: pointer;
+
+        &:hover {
+          color: rgb(213, 212, 220);
+        }
+      }
+    }
+  }
+
+  &__body {
+    flex: 1;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & > .message__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+
+      & > .MuiAvatar-root {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+      }
+
+      & > h3 {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    & > form {
+      display: flex;
+      flex: 1;
+
+      & > input {
+        width: 90%;
+        padding: 10px;
+        margin-left: 10px;
+        border: none;
+        outline: none;
+        border-radius: 0.35rem;
+        background-color: rgb(91, 91, 90);
+        color: rgb(255, 255, 255);
+      }
+
+      & > button {
+        display: none;
+      }
+    }
+
+    & > .MuiSvgIcon-root {
+      cursor: pointer;
+      font-size: xx-large;
+
+      &:hover {
+        color: rgb(135, 116, 225);
+      }
+    }
+  }
+
+  &__footerIcons {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+
+    & > .MuiSvgIcon-root {
+      font-size: xx-large;
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(135, 116, 225);
+      }
+    }
+  }
+}
