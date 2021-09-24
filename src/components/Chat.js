@@ -88,7 +88,7 @@ const Chat = () => {
   // };
 
 
-  const handleMessage = (e) => {
+  const sendMessage = (e) => {
     e.preventDefault();
     if (chatId) {
       const messages = (doc(db, 'chats', chatId));
@@ -136,7 +136,7 @@ const Chat = () => {
             placeholder="Message"
             required
           />
-          <button type="submit" onClick={handleMessage}>
+          <button type="submit" onClick={sendMessage}>
             Send
           </button>
         </form>

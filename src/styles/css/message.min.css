@@ -1,0 +1,2 @@
+.message{display:flex;padding:10px;margin:5px}.message__content{position:relative;display:flex;flex-direction:column;width:fit-content;padding:10px;background-color:#8774e1;border-radius:0.75rem}.message__content>span{color:white;border-bottom:1px solid gray}.message__content>small{position:absolute;right:0;top:60px}
+/*# sourceMappingURL=message.min.css.map */

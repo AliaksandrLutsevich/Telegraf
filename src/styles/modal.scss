@@ -1,0 +1,32 @@
+.modal__info{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .modal__input-name{
+    padding: 5px;
+  }
+  
+  .modal__input-image{
+    padding: 5px;
+  }
+  
+  
+  .modal_create_but {
+  &:hover{
+    background: #8846af;
+    background: -webkit-gradient(linear, left top, left bottom, from(#8846af), to(#8846af));
+    background: -moz-linear-gradient(top, #8846af, #8846af);
+    background: linear-gradient(to bottom, #8846af, #8846af);
+  }
+  }
+  
+  .modal_cancel_but {
+    &:hover{
+      background: #e1375b;
+      background: -webkit-gradient(linear, left top, left bottom, from(#e1375b), to(#ed2020));
+      background: -moz-linear-gradient(top, #e1375b, #e1375b);
+      background: linear-gradient(to bottom, #e1375b, #e1375b);
+    }
+    }

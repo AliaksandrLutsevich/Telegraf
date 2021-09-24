@@ -3,8 +3,10 @@ import FlipMove from "react-flip-move";
 import { useSelector } from "react-redux";
 
 import "../styles/chatlist.scss";
+import "../styles/modal.scss";
 import ListChat from "./ListChat";
 import { selectUser } from "./userSlice";
+import Modal from "react-modal";
 import {
   auth,
   db,
@@ -15,7 +17,6 @@ import {
   onSnapshot,
   addDoc,
 } from "../firebase";
-import Modal from "react-modal";
 
 import { Avatar, Button, Input } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
@@ -104,6 +105,11 @@ const Chatlist = () => {
               marginRight: "100px",
               background: "none",
             },
+            content: {
+              border: '1px solid #ccc',
+              background: 'rgb(203, 204, 206)',
+              borderRadius: '4px',
+            }
           }}
         >
           <div className="modal__info">
@@ -124,10 +130,12 @@ const Chatlist = () => {
               type="text"
               placeholder="Enter image link"
             />
-            <Button onClick={handleChat}>Create</Button>
-            <Button onClick={() => setModal(false)} variant="outlined">
+           
+            <Button className='modal_create_but' onClick={handleChat}>Create</Button>
+            <Button className='modal_cancel_but' onClick={() => setModal(false)} variant="outlined">
               Cancel
             </Button>
+            
           </div>
         </Modal>
       </div>
