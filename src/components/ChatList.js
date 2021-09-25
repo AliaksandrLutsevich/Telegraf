@@ -3,11 +3,11 @@ import FlipMove from "react-flip-move";
 import { useSelector } from "react-redux";
 import Modal from "react-modal";
 
-import "../styles/chatlist.scss";
-import "../styles/modal.scss";
 import ListChat from "./ListChat";
 import { selectUser } from './userSlice';
 import db, { auth } from '../firebase';
+import "../styles/chatlist.scss";
+import "../styles/modal.scss";
 
 import { Avatar, Button, Input } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";

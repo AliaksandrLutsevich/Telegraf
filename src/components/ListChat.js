@@ -5,13 +5,13 @@ import "../styles/listchat.scss";
 
 import { Avatar } from "@material-ui/core";
 
-import * as timeago from "timeago.js";
+import * as timeago from 'timeago.js';
 import db from "../firebase";
 
-const ListChat = forwardRef(({ id, name, chatImage }, ref) => {
+const ListChat = forwardRef(({ id, name, chatImage, }, ref) => {
   const dispatch = useDispatch();
   const chatId = useSelector(selectChatId);
-  const [lastMessage, setLastMessage] = useState("");
+  const [lastMessage, setLastMessage] = useState('');
 
   useEffect(() => {
     db.collection("chats")
@@ -30,7 +30,7 @@ const ListChat = forwardRef(({ id, name, chatImage }, ref) => {
         dispatch(
           setChatInfo({
             chatId: id,
-            name: name,
+            chatName: name,
             chatImage: chatImage,
           })
         )

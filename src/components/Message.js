@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { useSelector } from "react-redux";
-import "../styles/message.scss";
 import { selectUser } from "./userSlice";
+import "../styles/message.scss";
 
 
 const Message = forwardRef(
