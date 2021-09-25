@@ -13,7 +13,7 @@
   }
   
   
-  .modal_create_but {
+  .modal__create_button {
   &:hover{
     background: #8846af;
     background: -webkit-gradient(linear, left top, left bottom, from(#8846af), to(#8846af));
@@ -22,7 +22,7 @@
   }
   }
   
-  .modal_cancel_but {
+  .modal__cancel_button {
     &:hover{
       background: #e1375b;
       background: -webkit-gradient(linear, left top, left bottom, from(#e1375b), to(#ed2020));

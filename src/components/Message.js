@@ -10,8 +10,9 @@ const Message = forwardRef(
 
     return (
       <div ref={ref} className="message">
-        <div className="message__content">
+        
         <div className={`${user.email === sender ? 'message__info' : 'message__infoSender'}`}>
+        <div className="message__content">
         <span>{senderName}</span>
           <p>{message}</p>
           <small>{new Date(timestamp?.toDate()).toLocaleString}</small>

@@ -54,33 +54,12 @@
     flex: 1;
     margin-top: 20px;
     overflow: auto;
-  }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
-  &__bookmarks {
-    display: flex;
-    margin-bottom: 10px;
-    align-items: center;
-
-    &:hover {
-      background-color: rgba(151, 151, 151, 0.6);
-      cursor: pointer;
-    }
-
-    & > p {
-      margin-left: 10px;
-      color: rgb(255, 255, 255);
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 
-  &__bookmarksIcon {
-    align-items: center;
-    padding: 5px;
-    background-color: #b1b1b1;
-    border-radius: 50px;
-
-    & > .MuiSvgIcon-root {
-      margin: 0px 2px 0px 2px;
-      color: rgb(255, 255, 255);
-    }
-  }
 }

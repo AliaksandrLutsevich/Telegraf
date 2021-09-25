@@ -12,7 +12,6 @@ import "../styles/modal.scss";
 import { Avatar, Button, Input } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
-import BookmarkIcon from "@material-ui/icons/Bookmark";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 
@@ -36,18 +35,23 @@ const Chatlist = () => {
       );
   }, []);
 
-  const addNewChat = () => {
+  const addChat = () => {
     if (chatInput) {
       db.collection("chats").add({
         chatName: chatInput,
         chatImage: imageInput,
       });
     }
-
     setChatInput(null);
-    setImageInput("");
+    setImageInput("https://clck.ru/XeSMj");
     setModal(false);
   };
+
+  const cancelChat = () => {
+    setChatInput(null);
+    setImageInput("https://clck.ru/XeSMj");
+    setModal(false);
+  }
 
   return (
     <div className="chatlist">
@@ -62,6 +66,7 @@ const Chatlist = () => {
         <Modal
           isOpen={modal}
           onRequestClose={() => setModal(false)}
+          shouldCloseOnOverlayClick={false}
           style={{
             overlay: {
               top: "20%",
@@ -99,8 +104,8 @@ const Chatlist = () => {
               placeholder="Enter image link"
             />
            
-            <Button className='modal_create_but' onClick={addNewChat}>Create</Button>
-            <Button className='modal_cancel_but' onClick={() => setModal(false)} variant="outlined">
+            <Button className='modal__create_button' onClick={addChat}>Create</Button>
+            <Button className='modal__cancel_button' onClick={cancelChat} variant="outlined">
               Cancel
             </Button>
             
@@ -114,16 +119,10 @@ const Chatlist = () => {
               key={id}
               id={id}
               name={chatName.chatName}
-              chatImage={chatName.chatImage}
+              chatImage={ chatName.chatImage ? chatName.chatImage : 'https://clck.ru/XeSMj'}
             />
           ))}
         </FlipMove>
-      </div>
-      <div className="chatlist__bookmarks">
-        <div className="chatlist__bookmarksIcon">
-          <BookmarkIcon />
-        </div>
-        <p>Bookmarks</p>
       </div>
     </div>
   );
