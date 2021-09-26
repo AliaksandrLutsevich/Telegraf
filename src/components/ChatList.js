@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react";
-import FlipMove from "react-flip-move";
 import { useSelector } from "react-redux";
 import Modal from "react-modal";
 
@@ -63,9 +62,6 @@ const Chatlist = () => {
       .toLowerCase()
       .includes(searchValue.toLowerCase());
   });
-
-  console.log(filteredChats);
-
 
   return (
     <div className="chatlist">
@@ -136,7 +132,6 @@ const Chatlist = () => {
         </Modal>
       </div>
       <div className="chatlist__chats">
-        <FlipMove>
           {filteredChats.map(({ id, chatName }) => (
             <ListChat
               key={id}
@@ -149,7 +144,6 @@ const Chatlist = () => {
               }
             />
           ))}
-        </FlipMove>
       </div>
     </div>
   );

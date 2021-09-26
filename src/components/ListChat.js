@@ -1,6 +1,6 @@
 import React, { forwardRef, useState, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectChatId, setChatInfo } from "./chatSlice";
+import { useDispatch} from "react-redux";
+import { setChatInfo } from "./chatSlice";
 import "../styles/listchat.scss";
 
 import { Avatar } from "@material-ui/core";
@@ -8,9 +8,8 @@ import { Avatar } from "@material-ui/core";
 import * as timeago from 'timeago.js';
 import db from "../firebase";
 
-const ListChat = forwardRef(({ id, name, chatImage, }, ref) => {
+const ListChat = forwardRef(({ id, name, chatImage }, ref) => {
   const dispatch = useDispatch();
-  const chatId = useSelector(selectChatId);
   const [lastMessage, setLastMessage] = useState('');
 
   useMemo(() => {

@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import FlipMove from "react-flip-move";
+import ScrollableFeed from 'react-scrollable-feed';
 
 import "../styles/chat.scss";
 import { selectChatImage, selectChatName, selectChatId } from "./chatSlice";
@@ -8,8 +9,6 @@ import { selectUser } from "./userSlice";
 import Message from "./Message";
 import firebase from "firebase";
 import db from "../firebase";
-
-import ScrollableFeed from 'react-scrollable-feed';
 
 import { Avatar } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
