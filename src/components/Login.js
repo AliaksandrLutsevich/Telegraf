@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/login.scss";
 import { auth, provider } from "../firebase";
 
-
 const Login = () => {
   const signIn = (e) => {
     auth.signInWithPopup(provider).catch((error) => alert(error.message));
@@ -15,6 +14,6 @@ const Login = () => {
       </button>
     </div>
   );
-}
+};
 
 export default Login;

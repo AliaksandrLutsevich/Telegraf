@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import FlipMove from "react-flip-move";
-import ScrollableFeed from 'react-scrollable-feed';
+import ScrollableFeed from "react-scrollable-feed";
 
 import "../styles/chat.scss";
 import { selectChatImage, selectChatName, selectChatId } from "./chatSlice";
@@ -20,7 +20,7 @@ import AttachFileIcon from "@material-ui/icons/AttachFile";
 const Chat = () => {
   const chatImage = useSelector(selectChatImage);
   const chatName = useSelector(selectChatName);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const chatId = useSelector(selectChatId);
   const user = useSelector(selectUser);
   const [messages, setMessages] = useState([]);
@@ -67,20 +67,20 @@ const Chat = () => {
         </div>
       </div>
       <ScrollableFeed>
-      <div className="chat__body">
-        <FlipMove>
-          {messages.map(({ id, message }) => (
-            <Message
-              key={id}
-              id={id}
-              message={message.message}
-              timestamp={message.timestamp}
-              sender={message.user.email}
-              senderName={message.user.displayName}
-            />
-          ))}
-        </FlipMove>
-      </div>
+        <div className="chat__body">
+          <FlipMove>
+            {messages.map(({ id, message }) => (
+              <Message
+                key={id}
+                id={id}
+                message={message.message}
+                timestamp={message.timestamp}
+                sender={message.user.email}
+                senderName={message.user.displayName}
+              />
+            ))}
+          </FlipMove>
+        </div>
       </ScrollableFeed>
       <div className="chat__footer">
         <EmojiEmotionsIcon />

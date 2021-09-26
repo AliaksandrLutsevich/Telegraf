@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import ListChat from "./ListChat";
 import { selectUser } from "./userSlice";
 
-import firebase from 'firebase';
+import firebase from "firebase";
 import db, { auth } from "../firebase";
 
 import "../styles/chatlist.scss";
@@ -16,18 +16,17 @@ import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-
 const Chatlist = () => {
   const user = useSelector(selectUser);
   const [modal, setModal] = useState(false);
   const [chatInput, setChatInput] = useState(null);
   const [imageInput, setImageInput] = useState("https://clck.ru/XeSMj");
   let [chats, setChats] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
 
   useMemo(() => {
     db.collection("chats")
-      .orderBy("chatName", 'asc')
+      .orderBy("chatName", "asc")
       .onSnapshot((snapshot) =>
         setChats(
           snapshot.docs.map((doc) => ({
@@ -73,7 +72,7 @@ const Chatlist = () => {
           <input
             type="text"
             placeholder="Search"
-            onChange={(e)=> setSearchValue(e.target.value)}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
         </div>
         <AddIcon onClick={() => setModal(true)} className="chatlist__add" />
@@ -132,18 +131,16 @@ const Chatlist = () => {
         </Modal>
       </div>
       <div className="chatlist__chats">
-          {filteredChats.map(({ id, chatName }) => (
-            <ListChat
-              key={id}
-              id={id}
-              name={chatName.chatName}
-              chatImage={
-                chatName.chatImage
-                  ? chatName.chatImage
-                  : "https://clck.ru/XeSMj"
-              }
-            />
-          ))}
+        {filteredChats.map(({ id, chatName }) => (
+          <ListChat
+            key={id}
+            id={id}
+            name={chatName.chatName}
+            chatImage={
+              chatName.chatImage ? chatName.chatImage : "https://clck.ru/XeSMj"
+            }
+          />
+        ))}
       </div>
     </div>
   );

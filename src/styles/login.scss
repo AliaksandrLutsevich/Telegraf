@@ -19,13 +19,13 @@
 
   &__button {
     padding: 10px;
+    font-size: large;
     color: rgb(255, 255, 255);
     border: none;
     outline: none;
     cursor: pointer;
     background-color: rgb(69, 0, 118);
     border-radius: 30px;
-    font-size: large;
 
     &:hover {
       color: rgb(69, 0, 118);

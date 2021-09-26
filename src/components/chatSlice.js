@@ -9,9 +9,9 @@ export const chatSlice = createSlice({
   },
   reducers: {
     setChatInfo: (state, action) => {
-        state.chatId = action.payload.chatId;
-        state.chatName = action.payload.chatName;
-        state.chatImage = action.payload.chatImage;
+      state.chatId = action.payload.chatId;
+      state.chatName = action.payload.chatName;
+      state.chatImage = action.payload.chatImage;
     },
   },
 });

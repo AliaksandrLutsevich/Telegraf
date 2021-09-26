@@ -17,9 +17,9 @@
   }
 
   &__info {
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative;
     width: 100%;
 
     & > h3 {
@@ -34,8 +34,8 @@
 
     & > small {
       position: absolute;
-      right: 0;
       top: 28px;
+      right: 0;
     }
   }
 }
