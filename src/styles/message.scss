@@ -1,8 +1,9 @@
 .message {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
-  padding: 20px;
+  margin-left: 30%;
+  padding: 40px;
+  overflow-y: hidden;
 
   &__info > .message__content {
     position: relative;
