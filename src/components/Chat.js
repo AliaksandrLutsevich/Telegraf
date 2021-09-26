@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import FlipMove from "react-flip-move";
 
@@ -16,7 +16,6 @@ import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 import MicNoneIcon from "@material-ui/icons/MicNone";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 
-
 const Chat = () => {
   const chatImage = useSelector(selectChatImage);
   const chatName = useSelector(selectChatName);
@@ -25,12 +24,12 @@ const Chat = () => {
   const user = useSelector(selectUser);
   const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
+  useMemo(() => {
     if (chatId) {
       db.collection("chats")
         .doc(chatId)
         .collection("messages")
-        .orderBy("timestamp", "desc")
+        .orderBy("timestamp")
         .onSnapshot((snapshot) =>
           setMessages(
             snapshot.docs.map((doc) => ({
@@ -59,7 +58,7 @@ const Chat = () => {
       <div className="chat__header">
         <div className="chat__header-left">
           <Avatar src={chatImage} />
-          <h5>{chatName}</h5>
+          <h3>{chatName}</h3>
         </div>
         <div className="chat__header-right">
           <SearchIcon />
@@ -101,6 +100,6 @@ const Chat = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Chat;

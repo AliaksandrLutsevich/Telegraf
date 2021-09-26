@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectChatId, setChatInfo } from "./chatSlice";
 import "../styles/listchat.scss";
@@ -13,7 +13,7 @@ const ListChat = forwardRef(({ id, name, chatImage, }, ref) => {
   const chatId = useSelector(selectChatId);
   const [lastMessage, setLastMessage] = useState('');
 
-  useEffect(() => {
+  useMemo(() => {
     db.collection("chats")
       .doc(id)
       .collection("messages")

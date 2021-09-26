@@ -7,7 +7,7 @@
   &__info > .message__content {
     margin-left: auto;
     margin-top: 30px;
-    color: lightgray;
+    color: rgb(255, 255, 255);
     font-weight: 600;
     padding: 10px;
     border-radius: 10px;
@@ -16,7 +16,7 @@
     width: fit-content;
   }
 
-  &__infoSender > .message__content {
+  &__info-sender > .message__content {
     margin-top: 30px;
     color: rgb(255, 255, 255);
     font-weight: 600;
@@ -24,7 +24,7 @@
     border-radius: 10px;
     position: relative;
     width: fit-content;
-    background-color: rgb(199, 130, 255);
+    background-color: rgb(165, 62, 250);
   }
 
   &__content > small {
@@ -35,7 +35,7 @@
   }
 
   &__content > span {
-    color: rgb(155, 155, 155);
+    color: rgb(218, 218, 218);
     font-size: small;
     border-bottom: 1px solid rgb(119, 119, 119);
   }

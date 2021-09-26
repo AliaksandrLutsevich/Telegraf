@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useMemo } from "react";
 import FlipMove from "react-flip-move";
 import { useSelector } from "react-redux";
 import Modal from "react-modal";
 
 import ListChat from "./ListChat";
-import { selectUser } from './userSlice';
-import db, { auth } from '../firebase';
+import { selectUser } from "./userSlice";
+
+import firebase from 'firebase';
+import db, { auth } from "../firebase";
+
 import "../styles/chatlist.scss";
 import "../styles/modal.scss";
 
@@ -21,10 +24,11 @@ const Chatlist = () => {
   const [chatInput, setChatInput] = useState(null);
   const [imageInput, setImageInput] = useState("https://clck.ru/XeSMj");
   const [chats, setChats] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
-  useEffect(() => {
+  useMemo(() => {
     db.collection("chats")
-      .orderBy("chatName", "asc")
+      .orderBy("chatName", 'asc')
       .onSnapshot((snapshot) =>
         setChats(
           snapshot.docs.map((doc) => ({
@@ -35,11 +39,12 @@ const Chatlist = () => {
       );
   }, []);
 
-  const addChat = () => {
+  const addChat = (e) => {
     if (chatInput) {
       db.collection("chats").add({
         chatName: chatInput,
         chatImage: imageInput,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
     }
     setChatInput(null);
@@ -51,7 +56,15 @@ const Chatlist = () => {
     setChatInput(null);
     setImageInput("https://clck.ru/XeSMj");
     setModal(false);
-  }
+  };
+
+  // const filteredChats = chats.filter((name) => {
+  //   return name.chatName.chatName
+  //     .toLowerCase()
+  //     .includes(searchValue.toLowerCase());
+  // });
+
+  // console.log(filteredChats);
 
   return (
     <div className="chatlist">
@@ -60,12 +73,16 @@ const Chatlist = () => {
         <Avatar onClick={() => alert(user.displayName)} src={user.photo} />
         <div className="chatlist__input">
           <SearchIcon />
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
         </div>
         <AddIcon onClick={() => setModal(true)} className="chatlist__add" />
         <Modal
           isOpen={modal}
-          onRequestClose={() => setModal(false)}
+          onRequestClose={false}
           shouldCloseOnOverlayClick={false}
           style={{
             overlay: {
@@ -79,10 +96,10 @@ const Chatlist = () => {
               background: "none",
             },
             content: {
-              border: '1px solid #ccc',
-              background: 'rgb(203, 204, 206)',
-              borderRadius: '4px',
-            }
+              border: "1px solid #ccc",
+              background: "rgb(203, 204, 206)",
+              borderRadius: "4px",
+            },
           }}
         >
           <div className="modal__info">
@@ -103,29 +120,43 @@ const Chatlist = () => {
               type="text"
               placeholder="Enter image link"
             />
-           
-            <Button className='modal__create_button' onClick={addChat}>Create</Button>
-            <Button className='modal__cancel_button' onClick={cancelChat} variant="outlined">
+
+            <Button className="modal__create_button" onClick={addChat}>
+              Create
+            </Button>
+            <Button
+              className="modal__cancel_button"
+              onClick={cancelChat}
+              variant="outlined"
+            >
               Cancel
             </Button>
-            
           </div>
         </Modal>
       </div>
       <div className="chatlist__chats">
         <FlipMove>
-          {chats.map(({ id, chatName }) => (
+          {chats.filter((name) => {
+    return name.chatName.chatName
+      .toLowerCase()
+      .includes(searchValue.toLowerCase());
+  })
+          .map(({ id, chatName }) => (
             <ListChat
               key={id}
               id={id}
               name={chatName.chatName}
-              chatImage={ chatName.chatImage ? chatName.chatImage : 'https://clck.ru/XeSMj'}
+              chatImage={
+                chatName.chatImage
+                  ? chatName.chatImage
+                  : "https://clck.ru/XeSMj"
+              }
             />
           ))}
         </FlipMove>
       </div>
     </div>
   );
-}
+};
 
 export default Chatlist;

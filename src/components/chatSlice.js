@@ -17,9 +17,7 @@ export const chatSlice = createSlice({
 });
 
 export const { setChatInfo } = chatSlice.actions;
-
 export const selectChatId = (state) => state.chat.chatId;
 export const selectChatName = (state) => state.chat.chatName;
 export const selectChatImage = (state) => state.chat.chatImage;
-
 export default chatSlice.reducer;
