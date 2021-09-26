@@ -9,6 +9,8 @@ import Message from "./Message";
 import firebase from "firebase";
 import db from "../firebase";
 
+import ScrollableFeed from 'react-scrollable-feed';
+
 import { Avatar } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -65,6 +67,7 @@ const Chat = () => {
           <MoreVertIcon />
         </div>
       </div>
+      <ScrollableFeed>
       <div className="chat__body">
         <FlipMove>
           {messages.map(({ id, message }) => (
@@ -79,6 +82,7 @@ const Chat = () => {
           ))}
         </FlipMove>
       </div>
+      </ScrollableFeed>
       <div className="chat__footer">
         <EmojiEmotionsIcon />
         <form>

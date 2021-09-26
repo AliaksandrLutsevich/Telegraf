@@ -23,7 +23,7 @@ const Chatlist = () => {
   const [modal, setModal] = useState(false);
   const [chatInput, setChatInput] = useState(null);
   const [imageInput, setImageInput] = useState("https://clck.ru/XeSMj");
-  const [chats, setChats] = useState([]);
+  let [chats, setChats] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
   useMemo(() => {
@@ -58,13 +58,14 @@ const Chatlist = () => {
     setModal(false);
   };
 
-  // const filteredChats = chats.filter((name) => {
-  //   return name.chatName.chatName
-  //     .toLowerCase()
-  //     .includes(searchValue.toLowerCase());
-  // });
+  const filteredChats = chats.filter((name) => {
+    return name.chatName.chatName
+      .toLowerCase()
+      .includes(searchValue.toLowerCase());
+  });
 
-  // console.log(filteredChats);
+  console.log(filteredChats);
+
 
   return (
     <div className="chatlist">
@@ -76,7 +77,7 @@ const Chatlist = () => {
           <input
             type="text"
             placeholder="Search"
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e)=> setSearchValue(e.target.value)}
           />
         </div>
         <AddIcon onClick={() => setModal(true)} className="chatlist__add" />
@@ -136,12 +137,7 @@ const Chatlist = () => {
       </div>
       <div className="chatlist__chats">
         <FlipMove>
-          {chats.filter((name) => {
-    return name.chatName.chatName
-      .toLowerCase()
-      .includes(searchValue.toLowerCase());
-  })
-          .map(({ id, chatName }) => (
+          {filteredChats.map(({ id, chatName }) => (
             <ListChat
               key={id}
               id={id}
