@@ -116,7 +116,6 @@ const Chatlist = () => {
               type="text"
               placeholder="Enter image link"
             />
-
             <Button className="modal__create_button" onClick={addChat}>
               Create
             </Button>

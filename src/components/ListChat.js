@@ -22,6 +22,15 @@ const ListChat = forwardRef(({ id, name, chatImage }, ref) => {
       );
   }, [id]);
 
+  function validTimestamp(lastMes) {
+    if (lastMes === undefined) {
+      return lastMes = ''
+    } else if (lastMes.length > 0) {
+      return lastMes.slice(0, 15)
+    } else {
+      return lastMes }
+}
+
   return (
     <div
       className="list_chat"
@@ -39,7 +48,7 @@ const ListChat = forwardRef(({ id, name, chatImage }, ref) => {
       <div className="list_chat__info">
         <small>{timeago.format(lastMessage[0]?.timestamp?.toDate())}</small>
         <h3>{name}</h3>
-        <p>{lastMessage[0]?.message}</p>
+        <p>{validTimestamp(lastMessage[0]?.message)}</p>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import "../styles/message.scss";
 const Message = forwardRef(
   ({ id, message, timestamp, sender, senderName }, ref) => {
     const user = useSelector(selectUser);
-
+    
     return (
       <div ref={ref} className="message">
         <div
