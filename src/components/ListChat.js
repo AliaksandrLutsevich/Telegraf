@@ -33,6 +33,7 @@ const ListChat = forwardRef(({ id, name, chatImage }, ref) => {
 
   return (
     <div
+      ref={ref}
       className="list_chat"
       onClick={() =>
         dispatch(

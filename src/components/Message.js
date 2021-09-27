@@ -4,7 +4,7 @@ import { selectUser } from "./userSlice";
 import "../styles/message.scss";
 
 const Message = forwardRef(
-  ({ id, message, timestamp, sender, senderName }, ref) => {
+  ({ message, timestamp, sender, senderName }, ref) => {
     const user = useSelector(selectUser);
     
     return (
